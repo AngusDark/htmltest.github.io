@@ -1,0 +1,2586 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>竞价涨停分析</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <style>
+        .chart-container {
+            width: 100%;
+            height: 600px;
+            margin: 15px auto;
+            border: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div id="bar-chart" class="chart-container"></div>
+    <div id="line-chart" class="chart-container"></div>
+
+    <script>
+        // 渲染柱状图
+        var barChart = echarts.init(document.getElementById('bar-chart'));
+        barChart.setOption({
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "aria": {
+        "enabled": false
+    },
+    "color": [
+        "#e01f54",
+        "#5ab1ef",
+        "#5470c6",
+        "#91cc75",
+        "#fac858",
+        "#ee6666",
+        "#73c0de",
+        "#3ba272",
+        "#fc8452",
+        "#9a60b4",
+        "#ea7ccc"
+    ],
+    "series": [
+        {
+            "type": "bar",
+            "name": "\u7ade\u4ef7\u91d1\u989d",
+            "yAxisIndex": 0,
+            "legendHoverLink": true,
+            "data": [
+                1.53,
+                2.45,
+                4.34,
+                1.33,
+                1.03,
+                2.5,
+                3.43,
+                5.99,
+                1.94,
+                3.89
+            ],
+            "realtimeSort": false,
+            "showBackground": false,
+            "stackStrategy": "samesign",
+            "cursor": "pointer",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{c}\u4ebf",
+                "valueAnimation": false
+            }
+        },
+        {
+            "type": "bar",
+            "name": "\u672a\u5339\u914d\u91d1\u989d",
+            "yAxisIndex": 0,
+            "legendHoverLink": true,
+            "data": [
+                18.95,
+                49.45,
+                61.39,
+                28.05,
+                31.45,
+                24.49,
+                69.26,
+                87.88,
+                15.65,
+                28.58
+            ],
+            "realtimeSort": false,
+            "showBackground": false,
+            "stackStrategy": "samesign",
+            "cursor": "pointer",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{c}\u4ebf",
+                "valueAnimation": false
+            }
+        },
+        {
+            "type": "line",
+            "name": "\u7ade\u4ef7\u6da8\u5e45",
+            "connectNulls": false,
+            "xAxisIndex": 0,
+            "yAxisIndex": 1,
+            "symbol": "circle",
+            "symbolSize": 10,
+            "showSymbol": true,
+            "smooth": false,
+            "clip": true,
+            "step": false,
+            "stackStrategy": "samesign",
+            "data": [
+                [
+                    "2025-04-14",
+                    9.17
+                ],
+                [
+                    "2025-04-15",
+                    8.83
+                ],
+                [
+                    "2025-04-16",
+                    8.6
+                ],
+                [
+                    "2025-04-17",
+                    9.27
+                ],
+                [
+                    "2025-04-18",
+                    9.36
+                ],
+                [
+                    "2025-04-21",
+                    11.87
+                ],
+                [
+                    "2025-04-22",
+                    10.33
+                ],
+                [
+                    "2025-04-23",
+                    9.66
+                ],
+                [
+                    "2025-04-24",
+                    8.02
+                ],
+                [
+                    "2025-04-25",
+                    8.68
+                ]
+            ],
+            "hoverAnimation": true,
+            "label": {
+                "show": false,
+                "margin": 8,
+                "valueAnimation": false
+            },
+            "logBase": 10,
+            "seriesLayoutBy": "column",
+            "lineStyle": {
+                "show": true,
+                "width": 2,
+                "opacity": 1,
+                "curveness": 0,
+                "type": "solid",
+                "color": "#ffa500"
+            },
+            "areaStyle": {
+                "opacity": 0
+            },
+            "itemStyle": {
+                "color": "#ffa500"
+            },
+            "zlevel": 2,
+            "z": 0
+        },
+        {
+            "type": "line",
+            "name": "\u6570\u91cf",
+            "connectNulls": false,
+            "xAxisIndex": 0,
+            "yAxisIndex": 1,
+            "symbol": "diamond",
+            "symbolSize": 10,
+            "showSymbol": true,
+            "smooth": false,
+            "clip": true,
+            "step": false,
+            "stackStrategy": "samesign",
+            "data": [
+                [
+                    "2025-04-14",
+                    12
+                ],
+                [
+                    "2025-04-15",
+                    13
+                ],
+                [
+                    "2025-04-16",
+                    14
+                ],
+                [
+                    "2025-04-17",
+                    7
+                ],
+                [
+                    "2025-04-18",
+                    8
+                ],
+                [
+                    "2025-04-21",
+                    8
+                ],
+                [
+                    "2025-04-22",
+                    15
+                ],
+                [
+                    "2025-04-23",
+                    15
+                ],
+                [
+                    "2025-04-24",
+                    10
+                ],
+                [
+                    "2025-04-25",
+                    11
+                ]
+            ],
+            "hoverAnimation": true,
+            "label": {
+                "show": true,
+                "margin": 8,
+                "valueAnimation": false
+            },
+            "logBase": 10,
+            "seriesLayoutBy": "column",
+            "lineStyle": {
+                "show": true,
+                "width": 2,
+                "opacity": 1,
+                "curveness": 0,
+                "type": "dashed",
+                "color": "#5873A6"
+            },
+            "areaStyle": {
+                "opacity": 0
+            },
+            "itemStyle": {
+                "color": "#5873A6",
+                "borderColor": "#3a5f8a",
+                "borderWidth": 1
+            },
+            "zlevel": 2,
+            "z": 0
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "\u7ade\u4ef7\u91d1\u989d",
+                "\u672a\u5339\u914d\u91d1\u989d",
+                "\u7ade\u4ef7\u6da8\u5e45",
+                "\u6570\u91cf"
+            ],
+            "selected": {},
+            "show": true,
+            "top": "5%",
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14,
+            "backgroundColor": "transparent",
+            "borderColor": "#ccc",
+            "borderRadius": 0,
+            "pageButtonItemGap": 5,
+            "pageButtonPosition": "end",
+            "pageFormatter": "{current}/{total}",
+            "pageIconColor": "#2f4554",
+            "pageIconInactiveColor": "#aaa",
+            "pageIconSize": 15,
+            "animationDurationUpdate": 800,
+            "selector": false,
+            "selectorPosition": "auto",
+            "selectorItemGap": 7,
+            "selectorButtonGap": 10
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "axis",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "cross"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "enterable": false,
+        "confine": false,
+        "appendToBody": false,
+        "transitionDuration": 0.4,
+        "textStyle": {
+            "fontSize": 14
+        },
+        "backgroundColor": "rgba(255, 255, 255, 0.7)",
+        "borderWidth": 0,
+        "padding": 5,
+        "order": "seriesAsc"
+    },
+    "xAxis": [
+        {
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            },
+            "animation": true,
+            "animationThreshold": 2000,
+            "animationDuration": 1000,
+            "animationEasing": "cubicOut",
+            "animationDelay": 0,
+            "animationDurationUpdate": 300,
+            "animationEasingUpdate": "cubicOut",
+            "animationDelayUpdate": 0,
+            "data": [
+                "2025-04-14",
+                "2025-04-15",
+                "2025-04-16",
+                "2025-04-17",
+                "2025-04-18",
+                "2025-04-21",
+                "2025-04-22",
+                "2025-04-23",
+                "2025-04-24",
+                "2025-04-25"
+            ]
+        }
+    ],
+    "yAxis": [
+        {
+            "type": "value",
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "axisLabel": {
+                "show": true,
+                "margin": 8,
+                "formatter": "{value}",
+                "valueAnimation": false
+            },
+            "inverse": false,
+            "position": "left",
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            },
+            "animation": true,
+            "animationThreshold": 2000,
+            "animationDuration": 1000,
+            "animationEasing": "cubicOut",
+            "animationDelay": 0,
+            "animationDurationUpdate": 300,
+            "animationEasingUpdate": "cubicOut",
+            "animationDelayUpdate": 0
+        },
+        {
+            "type": "value",
+            "name": "\u6da8\u5e45/\u6570\u91cf",
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "axisLabel": {
+                "show": true,
+                "margin": 8,
+                "formatter": "{value}",
+                "valueAnimation": false
+            },
+            "inverse": false,
+            "position": "right",
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": false,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            },
+            "animation": true,
+            "animationThreshold": 2000,
+            "animationDuration": 1000,
+            "animationEasing": "cubicOut",
+            "animationDelay": 0,
+            "animationDurationUpdate": 300,
+            "animationEasingUpdate": "cubicOut",
+            "animationDelayUpdate": 0
+        }
+    ],
+    "title": [
+        {
+            "show": true,
+            "text": "\u7ade\u4ef7\u6da8\u505c\u5206\u6790",
+            "target": "blank",
+            "subtext": "Update Time 2025-04-27 23:37:05",
+            "subtarget": "blank",
+            "padding": 5,
+            "itemGap": 10,
+            "textAlign": "auto",
+            "textVerticalAlign": "auto",
+            "triggerEvent": false
+        }
+    ],
+    "dataZoom": [
+        {
+            "show": true,
+            "type": "slider",
+            "showDetail": true,
+            "showDataShadow": true,
+            "realtime": true,
+            "start": 0,
+            "end": 100,
+            "orient": "horizontal",
+            "xAxisIndex": [
+                0
+            ],
+            "zoomLock": false,
+            "filterMode": "filter"
+        },
+        {
+            "show": true,
+            "type": "inside",
+            "showDetail": true,
+            "showDataShadow": true,
+            "realtime": true,
+            "start": 0,
+            "end": 100,
+            "orient": "horizontal",
+            "xAxisIndex": [
+                0
+            ],
+            "zoomLock": false,
+            "filterMode": "filter",
+            "disabled": false,
+            "zoomOnMouseWheel": true,
+            "moveOnMouseMove": true,
+            "moveOnMouseWheel": true,
+            "preventDefaultMouseMove": true
+        }
+    ]
+});
+        
+        // 渲染折线图
+        var lineChart = echarts.init(document.getElementById('line-chart'));
+        lineChart.setOption({
+    "baseOption": {
+        "series": [
+            {
+                "type": "treemap",
+                "name": "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-25\uff09",
+                "data": [
+                    {
+                        "value": 129633453.0,
+                        "name": "\u4e00\u5b63\u62a5\u589e\u957f 1.296\u4ebf",
+                        "children": [
+                            {
+                                "value": 129633453.0,
+                                "name": "\u60e0\u800c\u6d66\n1.296\u4ebf"
+                            }
+                        ]
+                    },
+                    {
+                        "value": 1150979560.0,
+                        "name": "\u673a\u5668\u4eba\u6982\u5ff5 11.51\u4ebf",
+                        "children": [
+                            {
+                                "value": 1150979560.0,
+                                "name": "\u4e1c\u8d1d\u96c6\u56e2\n11.51\u4ebf"
+                            }
+                        ]
+                    },
+                    {
+                        "value": 315369100.0,
+                        "name": "\u7269\u6d41 3.154\u4ebf",
+                        "children": [
+                            {
+                                "value": 315369100.0,
+                                "name": "\u5929\u5143\u80a1\u4efd\n3.154\u4ebf"
+                            }
+                        ]
+                    },
+                    {
+                        "value": 511355290.0,
+                        "name": "\u7535\u529b 5.114\u4ebf",
+                        "children": [
+                            {
+                                "value": 303212660.0,
+                                "name": "\u534e\u94f6\u7535\u529b\n3.032\u4ebf"
+                            },
+                            {
+                                "value": 208142630.0,
+                                "name": "\u5b81\u6ce2\u8054\u5408\n2.081\u4ebf"
+                            }
+                        ]
+                    },
+                    {
+                        "value": 164577790.0,
+                        "name": "\u80a1\u6743\u8f6c\u8ba9 1.646\u4ebf",
+                        "children": [
+                            {
+                                "value": 164577790.0,
+                                "name": "\u5357\u56fd\u7f6e\u4e1a\n1.646\u4ebf"
+                            }
+                        ]
+                    },
+                    {
+                        "value": 132224227.0,
+                        "name": "\u96f6\u552e 1.322\u4ebf",
+                        "children": [
+                            {
+                                "value": 132224227.0,
+                                "name": "\u8302\u4e1a\u5546\u4e1a\n1.322\u4ebf"
+                            }
+                        ]
+                    }
+                ],
+                "width": "80%",
+                "height": "80%",
+                "label": {
+                    "show": true,
+                    "position": "inside",
+                    "margin": 8,
+                    "valueAnimation": false
+                },
+                "upperLabel": {
+                    "show": true,
+                    "position": "inside",
+                    "margin": 8,
+                    "valueAnimation": false
+                },
+                "drillDownIcon": "\u25b6",
+                "roam": true,
+                "nodeClick": "zoomToNode",
+                "zoomToNodeRatio": 0.1024,
+                "levels": [
+                    {
+                        "colorMappingBy": "index",
+                        "itemStyle": {
+                            "gapWidth": 1,
+                            "borderColor": "#1c1f24",
+                            "borderWidth": 2
+                        }
+                    },
+                    {
+                        "colorMappingBy": "index",
+                        "itemStyle": {
+                            "gapWidth": 1,
+                            "borderColor": "#ffffff",
+                            "borderWidth": 1
+                        }
+                    }
+                ],
+                "colorMappingBy": "index",
+                "visibleMin": 10
+            }
+        ],
+        "timeline": {
+            "axisType": "category",
+            "currentIndex": 9,
+            "orient": "horizontal",
+            "autoPlay": false,
+            "controlPosition": "left",
+            "loop": true,
+            "rewind": false,
+            "show": true,
+            "inverse": false,
+            "left": "10%",
+            "right": "10%",
+            "bottom": "-5px",
+            "progress": {},
+            "data": [
+                "2025-04-14",
+                "2025-04-15",
+                "2025-04-16",
+                "2025-04-17",
+                "2025-04-18",
+                "2025-04-21",
+                "2025-04-22",
+                "2025-04-23",
+                "2025-04-24",
+                "2025-04-25"
+            ]
+        },
+        "legend": [
+            {
+                "data": [
+                    "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-25\uff09"
+                ],
+                "selected": {},
+                "show": true,
+                "padding": 5,
+                "itemGap": 10,
+                "itemWidth": 25,
+                "itemHeight": 14,
+                "backgroundColor": "transparent",
+                "borderColor": "#ccc",
+                "borderRadius": 0,
+                "pageButtonItemGap": 5,
+                "pageButtonPosition": "end",
+                "pageFormatter": "{current}/{total}",
+                "pageIconColor": "#2f4554",
+                "pageIconInactiveColor": "#aaa",
+                "pageIconSize": 15,
+                "animationDurationUpdate": 800,
+                "selector": false,
+                "selectorPosition": "auto",
+                "selectorItemGap": 7,
+                "selectorButtonGap": 10
+            }
+        ]
+    },
+    "options": [
+        {
+            "legend": [
+                {
+                    "data": [
+                        "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-14\uff09"
+                    ],
+                    "selected": {},
+                    "show": true,
+                    "padding": 5,
+                    "itemGap": 10,
+                    "itemWidth": 25,
+                    "itemHeight": 14,
+                    "backgroundColor": "transparent",
+                    "borderColor": "#ccc",
+                    "borderRadius": 0,
+                    "pageButtonItemGap": 5,
+                    "pageButtonPosition": "end",
+                    "pageFormatter": "{current}/{total}",
+                    "pageIconColor": "#2f4554",
+                    "pageIconInactiveColor": "#aaa",
+                    "pageIconSize": 15,
+                    "animationDurationUpdate": 800,
+                    "selector": false,
+                    "selectorPosition": "auto",
+                    "selectorItemGap": 7,
+                    "selectorButtonGap": 10
+                }
+            ],
+            "series": [
+                {
+                    "type": "treemap",
+                    "name": "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-14\uff09",
+                    "data": [
+                        {
+                            "value": 51891840.0,
+                            "name": "\u4f53\u80b2\u4ea7\u4e1a 0.519\u4ebf",
+                            "children": [
+                                {
+                                    "value": 51891840.0,
+                                    "name": "\u6cf0\u6155\u58eb\n0.519\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 927584862.0,
+                            "name": "\u5916\u8d38 9.276\u4ebf",
+                            "children": [
+                                {
+                                    "value": 533698910.0,
+                                    "name": "\u4e2d\u6e90\u5bb6\u5c45\n5.337\u4ebf"
+                                },
+                                {
+                                    "value": 181502320.0,
+                                    "name": "\u5357\u5b81\u767e\u8d27\n1.815\u4ebf"
+                                },
+                                {
+                                    "value": 139211330.0,
+                                    "name": "\u5b81\u6c34\u96c6\u56e2\n1.392\u4ebf"
+                                },
+                                {
+                                    "value": 73172302.0,
+                                    "name": "\u901a\u8fbe\u521b\u667a\n0.732\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 320016340.0,
+                            "name": "\u77f3\u82f1\u6750\u6599 3.2\u4ebf",
+                            "children": [
+                                {
+                                    "value": 320016340.0,
+                                    "name": "\u65b0\u91d1\u8def\n3.2\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 87828896.0,
+                            "name": "\u80a1\u6743\u8f6c\u8ba9 0.878\u4ebf",
+                            "children": [
+                                {
+                                    "value": 87828896.0,
+                                    "name": "\u5efa\u827a\u96c6\u56e2\n0.878\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 279972140.0,
+                            "name": "\u82af\u7247 2.8\u4ebf",
+                            "children": [
+                                {
+                                    "value": 279972140.0,
+                                    "name": "\u76c8\u65b9\u5fae\n2.8\u4ebf"
+                                }
+                            ]
+                        }
+                    ],
+                    "width": "80%",
+                    "height": "80%",
+                    "label": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "upperLabel": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "drillDownIcon": "\u25b6",
+                    "roam": true,
+                    "nodeClick": "zoomToNode",
+                    "zoomToNodeRatio": 0.1024,
+                    "levels": [
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#1c1f24",
+                                "borderWidth": 2
+                            }
+                        },
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#ffffff",
+                                "borderWidth": 1
+                            }
+                        }
+                    ],
+                    "colorMappingBy": "index",
+                    "visibleMin": 10
+                }
+            ],
+            "title": [
+                {
+                    "show": true,
+                    "text": "\u672a\u5339\u914d\u91d1\u989d",
+                    "target": "blank",
+                    "subtext": "Update Time 2025-04-27 23:37:05",
+                    "subtarget": "blank",
+                    "padding": 5,
+                    "itemGap": 10,
+                    "textAlign": "auto",
+                    "textVerticalAlign": "auto",
+                    "triggerEvent": false
+                }
+            ],
+            "tooltip": {
+                "show": true,
+                "trigger": "item",
+                "triggerOn": "mousemove|click",
+                "axisPointer": {
+                    "type": "line"
+                },
+                "showContent": true,
+                "alwaysShowContent": false,
+                "showDelay": 0,
+                "hideDelay": 100,
+                "enterable": false,
+                "confine": false,
+                "appendToBody": false,
+                "transitionDuration": 0.4,
+                "formatter": "{b}<br/>\u91d1\u989d: {c}",
+                "textStyle": {
+                    "fontSize": 14
+                },
+                "borderWidth": 0,
+                "padding": 5,
+                "order": "seriesAsc"
+            },
+            "color": [
+                "#5470c6",
+                "#91cc75",
+                "#fac858",
+                "#ee6666",
+                "#73c0de",
+                "#3ba272",
+                "#fc8452",
+                "#9a60b4",
+                "#ea7ccc"
+            ]
+        },
+        {
+            "legend": [
+                {
+                    "data": [
+                        "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-15\uff09"
+                    ],
+                    "selected": {},
+                    "show": true,
+                    "padding": 5,
+                    "itemGap": 10,
+                    "itemWidth": 25,
+                    "itemHeight": 14,
+                    "backgroundColor": "transparent",
+                    "borderColor": "#ccc",
+                    "borderRadius": 0,
+                    "pageButtonItemGap": 5,
+                    "pageButtonPosition": "end",
+                    "pageFormatter": "{current}/{total}",
+                    "pageIconColor": "#2f4554",
+                    "pageIconInactiveColor": "#aaa",
+                    "pageIconSize": 15,
+                    "animationDurationUpdate": 800,
+                    "selector": false,
+                    "selectorPosition": "auto",
+                    "selectorItemGap": 7,
+                    "selectorButtonGap": 10
+                }
+            ],
+            "series": [
+                {
+                    "type": "treemap",
+                    "name": "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-15\uff09",
+                    "data": [
+                        {
+                            "value": 436191280.0,
+                            "name": "ST\u6458\u5e3d 4.362\u4ebf",
+                            "children": [
+                                {
+                                    "value": 436191280.0,
+                                    "name": "\u5929\u6c83\u79d1\u6280\n4.362\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 1168314030.0,
+                            "name": "\u4e00\u5b63\u62a5\u589e\u957f 11.683\u4ebf",
+                            "children": [
+                                {
+                                    "value": 1168314030.0,
+                                    "name": "\u6709\u7814\u65b0\u6750\n11.683\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 78929194.0,
+                            "name": "\u533b\u836f 0.789\u4ebf",
+                            "children": [
+                                {
+                                    "value": 78929194.0,
+                                    "name": "\u7acb\u65b9\u5236\u836f\n0.789\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 259878230.0,
+                            "name": "\u5916\u8d38 2.599\u4ebf",
+                            "children": [
+                                {
+                                    "value": 155402540.0,
+                                    "name": "\u6d2a\u5174\u80a1\u4efd\n1.554\u4ebf"
+                                },
+                                {
+                                    "value": 104475690.0,
+                                    "name": "\u8fea\u751f\u529b\n1.045\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 1492899100.0,
+                            "name": "\u5e76\u8d2d\u91cd\u7ec4 14.929\u4ebf",
+                            "children": [
+                                {
+                                    "value": 1492899100.0,
+                                    "name": "\u5317\u81ea\u79d1\u6280\n14.929\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 307700480.0,
+                            "name": "\u6587\u521b\u4ea7\u54c1 3.077\u4ebf",
+                            "children": [
+                                {
+                                    "value": 307700480.0,
+                                    "name": "\u4eac\u534e\u6fc0\u5149\n3.077\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 206754270.0,
+                            "name": "\u77f3\u82f1\u6750\u6599 2.068\u4ebf",
+                            "children": [
+                                {
+                                    "value": 206754270.0,
+                                    "name": "\u65b0\u91d1\u8def\n2.068\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 268045430.0,
+                            "name": "\u96f6\u552e 2.68\u4ebf",
+                            "children": [
+                                {
+                                    "value": 268045430.0,
+                                    "name": "\u56fd\u5149\u8fde\u9501\n2.68\u4ebf"
+                                }
+                            ]
+                        }
+                    ],
+                    "width": "80%",
+                    "height": "80%",
+                    "label": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "upperLabel": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "drillDownIcon": "\u25b6",
+                    "roam": true,
+                    "nodeClick": "zoomToNode",
+                    "zoomToNodeRatio": 0.1024,
+                    "levels": [
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#1c1f24",
+                                "borderWidth": 2
+                            }
+                        },
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#ffffff",
+                                "borderWidth": 1
+                            }
+                        }
+                    ],
+                    "colorMappingBy": "index",
+                    "visibleMin": 10
+                }
+            ],
+            "title": [
+                {
+                    "show": true,
+                    "text": "\u672a\u5339\u914d\u91d1\u989d",
+                    "target": "blank",
+                    "subtext": "Update Time 2025-04-27 23:37:05",
+                    "subtarget": "blank",
+                    "padding": 5,
+                    "itemGap": 10,
+                    "textAlign": "auto",
+                    "textVerticalAlign": "auto",
+                    "triggerEvent": false
+                }
+            ],
+            "tooltip": {
+                "show": true,
+                "trigger": "item",
+                "triggerOn": "mousemove|click",
+                "axisPointer": {
+                    "type": "line"
+                },
+                "showContent": true,
+                "alwaysShowContent": false,
+                "showDelay": 0,
+                "hideDelay": 100,
+                "enterable": false,
+                "confine": false,
+                "appendToBody": false,
+                "transitionDuration": 0.4,
+                "formatter": "{b}<br/>\u91d1\u989d: {c}",
+                "textStyle": {
+                    "fontSize": 14
+                },
+                "borderWidth": 0,
+                "padding": 5,
+                "order": "seriesAsc"
+            },
+            "color": [
+                "#5470c6",
+                "#91cc75",
+                "#fac858",
+                "#ee6666",
+                "#73c0de",
+                "#3ba272",
+                "#fc8452",
+                "#9a60b4",
+                "#ea7ccc"
+            ]
+        },
+        {
+            "legend": [
+                {
+                    "data": [
+                        "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-16\uff09"
+                    ],
+                    "selected": {},
+                    "show": true,
+                    "padding": 5,
+                    "itemGap": 10,
+                    "itemWidth": 25,
+                    "itemHeight": 14,
+                    "backgroundColor": "transparent",
+                    "borderColor": "#ccc",
+                    "borderRadius": 0,
+                    "pageButtonItemGap": 5,
+                    "pageButtonPosition": "end",
+                    "pageFormatter": "{current}/{total}",
+                    "pageIconColor": "#2f4554",
+                    "pageIconInactiveColor": "#aaa",
+                    "pageIconSize": 15,
+                    "animationDurationUpdate": 800,
+                    "selector": false,
+                    "selectorPosition": "auto",
+                    "selectorItemGap": 7,
+                    "selectorButtonGap": 10
+                }
+            ],
+            "series": [
+                {
+                    "type": "treemap",
+                    "name": "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-16\uff09",
+                    "data": [
+                        {
+                            "value": 444997560.0,
+                            "name": "ST\u6458\u5e3d 4.45\u4ebf",
+                            "children": [
+                                {
+                                    "value": 444997560.0,
+                                    "name": "\u5929\u6c83\u79d1\u6280\n4.45\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 159365440.0,
+                            "name": "\u533b\u836f 1.594\u4ebf",
+                            "children": [
+                                {
+                                    "value": 159365440.0,
+                                    "name": "\u7acb\u65b9\u5236\u836f\n1.594\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 3853354460.0,
+                            "name": "\u5916\u8d38 38.534\u4ebf",
+                            "children": [
+                                {
+                                    "value": 2953678400.0,
+                                    "name": "\u534e\u8d38\u7269\u6d41\n29.537\u4ebf"
+                                },
+                                {
+                                    "value": 745502780.0,
+                                    "name": "\u6d54\u5174\u80a1\u4efd\n7.455\u4ebf"
+                                },
+                                {
+                                    "value": 154173280.0,
+                                    "name": "\u6c38\u6cf0\u8fd0\n1.542\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 860992550.0,
+                            "name": "\u5b9e\u63a7\u4eba\u53d8\u66f4 8.61\u4ebf",
+                            "children": [
+                                {
+                                    "value": 860992550.0,
+                                    "name": "\u534e\u8d44\u5b9e\u4e1a\n8.61\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 235225610.0,
+                            "name": "\u7535\u529b 2.352\u4ebf",
+                            "children": [
+                                {
+                                    "value": 235225610.0,
+                                    "name": "\u4e50\u5c71\u7535\u529b\n2.352\u4ebf"
+                                }
+                            ]
+                        }
+                    ],
+                    "width": "80%",
+                    "height": "80%",
+                    "label": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "upperLabel": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "drillDownIcon": "\u25b6",
+                    "roam": true,
+                    "nodeClick": "zoomToNode",
+                    "zoomToNodeRatio": 0.1024,
+                    "levels": [
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#1c1f24",
+                                "borderWidth": 2
+                            }
+                        },
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#ffffff",
+                                "borderWidth": 1
+                            }
+                        }
+                    ],
+                    "colorMappingBy": "index",
+                    "visibleMin": 10
+                }
+            ],
+            "title": [
+                {
+                    "show": true,
+                    "text": "\u672a\u5339\u914d\u91d1\u989d",
+                    "target": "blank",
+                    "subtext": "Update Time 2025-04-27 23:37:05",
+                    "subtarget": "blank",
+                    "padding": 5,
+                    "itemGap": 10,
+                    "textAlign": "auto",
+                    "textVerticalAlign": "auto",
+                    "triggerEvent": false
+                }
+            ],
+            "tooltip": {
+                "show": true,
+                "trigger": "item",
+                "triggerOn": "mousemove|click",
+                "axisPointer": {
+                    "type": "line"
+                },
+                "showContent": true,
+                "alwaysShowContent": false,
+                "showDelay": 0,
+                "hideDelay": 100,
+                "enterable": false,
+                "confine": false,
+                "appendToBody": false,
+                "transitionDuration": 0.4,
+                "formatter": "{b}<br/>\u91d1\u989d: {c}",
+                "textStyle": {
+                    "fontSize": 14
+                },
+                "borderWidth": 0,
+                "padding": 5,
+                "order": "seriesAsc"
+            },
+            "color": [
+                "#5470c6",
+                "#91cc75",
+                "#fac858",
+                "#ee6666",
+                "#73c0de",
+                "#3ba272",
+                "#fc8452",
+                "#9a60b4",
+                "#ea7ccc"
+            ]
+        },
+        {
+            "legend": [
+                {
+                    "data": [
+                        "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-17\uff09"
+                    ],
+                    "selected": {},
+                    "show": true,
+                    "padding": 5,
+                    "itemGap": 10,
+                    "itemWidth": 25,
+                    "itemHeight": 14,
+                    "backgroundColor": "transparent",
+                    "borderColor": "#ccc",
+                    "borderRadius": 0,
+                    "pageButtonItemGap": 5,
+                    "pageButtonPosition": "end",
+                    "pageFormatter": "{current}/{total}",
+                    "pageIconColor": "#2f4554",
+                    "pageIconInactiveColor": "#aaa",
+                    "pageIconSize": 15,
+                    "animationDurationUpdate": 800,
+                    "selector": false,
+                    "selectorPosition": "auto",
+                    "selectorItemGap": 7,
+                    "selectorButtonGap": 10
+                }
+            ],
+            "series": [
+                {
+                    "type": "treemap",
+                    "name": "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-17\uff09",
+                    "data": [
+                        {
+                            "value": 105322581.0,
+                            "name": "\u4e00\u5b63\u62a5\u589e\u957f 1.053\u4ebf",
+                            "children": [
+                                {
+                                    "value": 105322581.0,
+                                    "name": "\u65b0\u5b8f\u6cfd\n1.053\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 556377660.0,
+                            "name": "\u533b\u836f 5.564\u4ebf",
+                            "children": [
+                                {
+                                    "value": 556377660.0,
+                                    "name": "\u7acb\u65b9\u5236\u836f\n5.564\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 169017140.0,
+                            "name": "\u5916\u8d38 1.69\u4ebf",
+                            "children": [
+                                {
+                                    "value": 169017140.0,
+                                    "name": "\u6d54\u5174\u80a1\u4efd\n1.69\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 1700147700.0,
+                            "name": "\u5e76\u8d2d\u91cd\u7ec4 17.001\u4ebf",
+                            "children": [
+                                {
+                                    "value": 1700147700.0,
+                                    "name": "\u84dd\u79d1\u9ad8\u65b0\n17.001\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 55456500.0,
+                            "name": "\u670d\u88c5\u5bb6\u7eba 0.555\u4ebf",
+                            "children": [
+                                {
+                                    "value": 55456500.0,
+                                    "name": "\u76db\u6cf0\u96c6\u56e2\n0.555\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 195692010.0,
+                            "name": "\u6e2f\u53e3 1.957\u4ebf",
+                            "children": [
+                                {
+                                    "value": 195692010.0,
+                                    "name": "\u5357 \u4eac \u6e2f\n1.957\u4ebf"
+                                }
+                            ]
+                        }
+                    ],
+                    "width": "80%",
+                    "height": "80%",
+                    "label": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "upperLabel": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "drillDownIcon": "\u25b6",
+                    "roam": true,
+                    "nodeClick": "zoomToNode",
+                    "zoomToNodeRatio": 0.1024,
+                    "levels": [
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#1c1f24",
+                                "borderWidth": 2
+                            }
+                        },
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#ffffff",
+                                "borderWidth": 1
+                            }
+                        }
+                    ],
+                    "colorMappingBy": "index",
+                    "visibleMin": 10
+                }
+            ],
+            "title": [
+                {
+                    "show": true,
+                    "text": "\u672a\u5339\u914d\u91d1\u989d",
+                    "target": "blank",
+                    "subtext": "Update Time 2025-04-27 23:37:05",
+                    "subtarget": "blank",
+                    "padding": 5,
+                    "itemGap": 10,
+                    "textAlign": "auto",
+                    "textVerticalAlign": "auto",
+                    "triggerEvent": false
+                }
+            ],
+            "tooltip": {
+                "show": true,
+                "trigger": "item",
+                "triggerOn": "mousemove|click",
+                "axisPointer": {
+                    "type": "line"
+                },
+                "showContent": true,
+                "alwaysShowContent": false,
+                "showDelay": 0,
+                "hideDelay": 100,
+                "enterable": false,
+                "confine": false,
+                "appendToBody": false,
+                "transitionDuration": 0.4,
+                "formatter": "{b}<br/>\u91d1\u989d: {c}",
+                "textStyle": {
+                    "fontSize": 14
+                },
+                "borderWidth": 0,
+                "padding": 5,
+                "order": "seriesAsc"
+            },
+            "color": [
+                "#5470c6",
+                "#91cc75",
+                "#fac858",
+                "#ee6666",
+                "#73c0de",
+                "#3ba272",
+                "#fc8452",
+                "#9a60b4",
+                "#ea7ccc"
+            ]
+        },
+        {
+            "legend": [
+                {
+                    "data": [
+                        "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-18\uff09"
+                    ],
+                    "selected": {},
+                    "show": true,
+                    "padding": 5,
+                    "itemGap": 10,
+                    "itemWidth": 25,
+                    "itemHeight": 14,
+                    "backgroundColor": "transparent",
+                    "borderColor": "#ccc",
+                    "borderRadius": 0,
+                    "pageButtonItemGap": 5,
+                    "pageButtonPosition": "end",
+                    "pageFormatter": "{current}/{total}",
+                    "pageIconColor": "#2f4554",
+                    "pageIconInactiveColor": "#aaa",
+                    "pageIconSize": 15,
+                    "animationDurationUpdate": 800,
+                    "selector": false,
+                    "selectorPosition": "auto",
+                    "selectorItemGap": 7,
+                    "selectorButtonGap": 10
+                }
+            ],
+            "series": [
+                {
+                    "type": "treemap",
+                    "name": "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-18\uff09",
+                    "data": [
+                        {
+                            "value": 710937040.0,
+                            "name": "\u4e00\u5b63\u62a5\u589e\u957f 7.109\u4ebf",
+                            "children": [
+                                {
+                                    "value": 710937040.0,
+                                    "name": "\u65b0\u5b8f\u6cfd\n7.109\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 860783760.0,
+                            "name": "\u533b\u836f 8.608\u4ebf",
+                            "children": [
+                                {
+                                    "value": 860783760.0,
+                                    "name": "\u7acb\u65b9\u5236\u836f\n8.608\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 827614789.0,
+                            "name": "\u5e76\u8d2d\u91cd\u7ec4 8.276\u4ebf",
+                            "children": [
+                                {
+                                    "value": 728618070.0,
+                                    "name": "\u84dd\u79d1\u9ad8\u65b0\n7.286\u4ebf"
+                                },
+                                {
+                                    "value": 98996719.0,
+                                    "name": "\u5c71\u4e1c\u534e\u9e4f\n0.99\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 427754780.0,
+                            "name": "\u98df\u54c1\u996e\u6599 4.278\u4ebf",
+                            "children": [
+                                {
+                                    "value": 230928290.0,
+                                    "name": "\u5b89\u8bb0\u98df\u54c1\n2.309\u4ebf"
+                                },
+                                {
+                                    "value": 196826490.0,
+                                    "name": "\u7687\u6c0f\u96c6\u56e2\n1.968\u4ebf"
+                                }
+                            ]
+                        }
+                    ],
+                    "width": "80%",
+                    "height": "80%",
+                    "label": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "upperLabel": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "drillDownIcon": "\u25b6",
+                    "roam": true,
+                    "nodeClick": "zoomToNode",
+                    "zoomToNodeRatio": 0.1024,
+                    "levels": [
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#1c1f24",
+                                "borderWidth": 2
+                            }
+                        },
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#ffffff",
+                                "borderWidth": 1
+                            }
+                        }
+                    ],
+                    "colorMappingBy": "index",
+                    "visibleMin": 10
+                }
+            ],
+            "title": [
+                {
+                    "show": true,
+                    "text": "\u672a\u5339\u914d\u91d1\u989d",
+                    "target": "blank",
+                    "subtext": "Update Time 2025-04-27 23:37:05",
+                    "subtarget": "blank",
+                    "padding": 5,
+                    "itemGap": 10,
+                    "textAlign": "auto",
+                    "textVerticalAlign": "auto",
+                    "triggerEvent": false
+                }
+            ],
+            "tooltip": {
+                "show": true,
+                "trigger": "item",
+                "triggerOn": "mousemove|click",
+                "axisPointer": {
+                    "type": "line"
+                },
+                "showContent": true,
+                "alwaysShowContent": false,
+                "showDelay": 0,
+                "hideDelay": 100,
+                "enterable": false,
+                "confine": false,
+                "appendToBody": false,
+                "transitionDuration": 0.4,
+                "formatter": "{b}<br/>\u91d1\u989d: {c}",
+                "textStyle": {
+                    "fontSize": 14
+                },
+                "borderWidth": 0,
+                "padding": 5,
+                "order": "seriesAsc"
+            },
+            "color": [
+                "#5470c6",
+                "#91cc75",
+                "#fac858",
+                "#ee6666",
+                "#73c0de",
+                "#3ba272",
+                "#fc8452",
+                "#9a60b4",
+                "#ea7ccc"
+            ]
+        },
+        {
+            "legend": [
+                {
+                    "data": [
+                        "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-21\uff09"
+                    ],
+                    "selected": {},
+                    "show": true,
+                    "padding": 5,
+                    "itemGap": 10,
+                    "itemWidth": 25,
+                    "itemHeight": 14,
+                    "backgroundColor": "transparent",
+                    "borderColor": "#ccc",
+                    "borderRadius": 0,
+                    "pageButtonItemGap": 5,
+                    "pageButtonPosition": "end",
+                    "pageFormatter": "{current}/{total}",
+                    "pageIconColor": "#2f4554",
+                    "pageIconInactiveColor": "#aaa",
+                    "pageIconSize": 15,
+                    "animationDurationUpdate": 800,
+                    "selector": false,
+                    "selectorPosition": "auto",
+                    "selectorItemGap": 7,
+                    "selectorButtonGap": 10
+                }
+            ],
+            "series": [
+                {
+                    "type": "treemap",
+                    "name": "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-21\uff09",
+                    "data": [
+                        {
+                            "value": 105657997.0,
+                            "name": "ST\u6458\u5e3d 1.057\u4ebf",
+                            "children": [
+                                {
+                                    "value": 105657997.0,
+                                    "name": "\u6b65\u6b65\u9ad8\n1.057\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 648327570.0,
+                            "name": "\u4e00\u5b63\u62a5\u589e\u957f 6.483\u4ebf",
+                            "children": [
+                                {
+                                    "value": 648327570.0,
+                                    "name": "\u4ed5\u4f73\u5149\u5b50\n6.483\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 249055830.0,
+                            "name": "\u5e76\u8d2d\u91cd\u7ec4 2.491\u4ebf",
+                            "children": [
+                                {
+                                    "value": 249055830.0,
+                                    "name": "\u740f\u5347\u79d1\u6280\n2.491\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 196255120.0,
+                            "name": "\u673a\u5668\u4eba\u6982\u5ff5 1.963\u4ebf",
+                            "children": [
+                                {
+                                    "value": 196255120.0,
+                                    "name": "\u4eac\u57ce\u80a1\u4efd\n1.963\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 192507180.0,
+                            "name": "\u7269\u6d41 1.925\u4ebf",
+                            "children": [
+                                {
+                                    "value": 192507180.0,
+                                    "name": "\u5929\u5143\u80a1\u4efd\n1.925\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 456133700.0,
+                            "name": "\u901a\u4fe1 4.561\u4ebf",
+                            "children": [
+                                {
+                                    "value": 456133700.0,
+                                    "name": "\u6b66\u6c49\u51e1\u8c37\n4.561\u4ebf"
+                                }
+                            ]
+                        }
+                    ],
+                    "width": "80%",
+                    "height": "80%",
+                    "label": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "upperLabel": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "drillDownIcon": "\u25b6",
+                    "roam": true,
+                    "nodeClick": "zoomToNode",
+                    "zoomToNodeRatio": 0.1024,
+                    "levels": [
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#1c1f24",
+                                "borderWidth": 2
+                            }
+                        },
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#ffffff",
+                                "borderWidth": 1
+                            }
+                        }
+                    ],
+                    "colorMappingBy": "index",
+                    "visibleMin": 10
+                }
+            ],
+            "title": [
+                {
+                    "show": true,
+                    "text": "\u672a\u5339\u914d\u91d1\u989d",
+                    "target": "blank",
+                    "subtext": "Update Time 2025-04-27 23:37:05",
+                    "subtarget": "blank",
+                    "padding": 5,
+                    "itemGap": 10,
+                    "textAlign": "auto",
+                    "textVerticalAlign": "auto",
+                    "triggerEvent": false
+                }
+            ],
+            "tooltip": {
+                "show": true,
+                "trigger": "item",
+                "triggerOn": "mousemove|click",
+                "axisPointer": {
+                    "type": "line"
+                },
+                "showContent": true,
+                "alwaysShowContent": false,
+                "showDelay": 0,
+                "hideDelay": 100,
+                "enterable": false,
+                "confine": false,
+                "appendToBody": false,
+                "transitionDuration": 0.4,
+                "formatter": "{b}<br/>\u91d1\u989d: {c}",
+                "textStyle": {
+                    "fontSize": 14
+                },
+                "borderWidth": 0,
+                "padding": 5,
+                "order": "seriesAsc"
+            },
+            "color": [
+                "#5470c6",
+                "#91cc75",
+                "#fac858",
+                "#ee6666",
+                "#73c0de",
+                "#3ba272",
+                "#fc8452",
+                "#9a60b4",
+                "#ea7ccc"
+            ]
+        },
+        {
+            "legend": [
+                {
+                    "data": [
+                        "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-22\uff09"
+                    ],
+                    "selected": {},
+                    "show": true,
+                    "padding": 5,
+                    "itemGap": 10,
+                    "itemWidth": 25,
+                    "itemHeight": 14,
+                    "backgroundColor": "transparent",
+                    "borderColor": "#ccc",
+                    "borderRadius": 0,
+                    "pageButtonItemGap": 5,
+                    "pageButtonPosition": "end",
+                    "pageFormatter": "{current}/{total}",
+                    "pageIconColor": "#2f4554",
+                    "pageIconInactiveColor": "#aaa",
+                    "pageIconSize": 15,
+                    "animationDurationUpdate": 800,
+                    "selector": false,
+                    "selectorPosition": "auto",
+                    "selectorItemGap": 7,
+                    "selectorButtonGap": 10
+                }
+            ],
+            "series": [
+                {
+                    "type": "treemap",
+                    "name": "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-22\uff09",
+                    "data": [
+                        {
+                            "value": 591628750.0,
+                            "name": "ST\u6458\u5e3d 5.916\u4ebf",
+                            "children": [
+                                {
+                                    "value": 591628750.0,
+                                    "name": "\u6b65\u6b65\u9ad8\n5.916\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 1507810.0,
+                            "name": "\u4e00\u5b63\u62a5\u589e\u957f 0.015\u4ebf",
+                            "children": [
+                                {
+                                    "value": 1507810.0,
+                                    "name": "\u798f\u65af\u8fbe\n0.015\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 677078250.0,
+                            "name": "\u519c\u4e1a 6.771\u4ebf",
+                            "children": [
+                                {
+                                    "value": 677078250.0,
+                                    "name": "\u5148\u8fbe\u80a1\u4efd\n6.771\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 193698670.0,
+                            "name": "\u5916\u8d38 1.937\u4ebf",
+                            "children": [
+                                {
+                                    "value": 193698670.0,
+                                    "name": "\u8de8\u5883\u901a\n1.937\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 148305610.0,
+                            "name": "\u5e73\u53f0\u7ecf\u6d4e 1.483\u4ebf",
+                            "children": [
+                                {
+                                    "value": 148305610.0,
+                                    "name": "\u5b89\u6b63\u65f6\u5c1a\n1.483\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 2505890050.0,
+                            "name": "\u5e76\u8d2d\u91cd\u7ec4 25.059\u4ebf",
+                            "children": [
+                                {
+                                    "value": 2070033300.0,
+                                    "name": "\u65b0\u6668\u79d1\u6280\n20.7\u4ebf"
+                                },
+                                {
+                                    "value": 435856750.0,
+                                    "name": "\u81f4\u5c1a\u79d1\u6280\n4.359\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 1209512800.0,
+                            "name": "\u7269\u6d41 12.095\u4ebf",
+                            "children": [
+                                {
+                                    "value": 933172560.0,
+                                    "name": "\u4fdd\u7a0e\u79d1\u6280\n9.332\u4ebf"
+                                },
+                                {
+                                    "value": 276340240.0,
+                                    "name": "\u5929\u5143\u80a1\u4efd\n2.763\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 1130448420.0,
+                            "name": "\u8de8\u5883\u652f\u4ed8 11.304\u4ebf",
+                            "children": [
+                                {
+                                    "value": 1130448420.0,
+                                    "name": "\u6d77\u8054\u91d1\u6c47\n11.304\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 249669860.0,
+                            "name": "\u9020\u7eb8 2.497\u4ebf",
+                            "children": [
+                                {
+                                    "value": 249669860.0,
+                                    "name": "\u534e\u6cf0\u80a1\u4efd\n2.497\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 91943906.0,
+                            "name": "\u96f6\u552e 0.919\u4ebf",
+                            "children": [
+                                {
+                                    "value": 91943906.0,
+                                    "name": "\u767e\u5927\u96c6\u56e2\n0.919\u4ebf"
+                                }
+                            ]
+                        }
+                    ],
+                    "width": "80%",
+                    "height": "80%",
+                    "label": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "upperLabel": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "drillDownIcon": "\u25b6",
+                    "roam": true,
+                    "nodeClick": "zoomToNode",
+                    "zoomToNodeRatio": 0.1024,
+                    "levels": [
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#1c1f24",
+                                "borderWidth": 2
+                            }
+                        },
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#ffffff",
+                                "borderWidth": 1
+                            }
+                        }
+                    ],
+                    "colorMappingBy": "index",
+                    "visibleMin": 10
+                }
+            ],
+            "title": [
+                {
+                    "show": true,
+                    "text": "\u672a\u5339\u914d\u91d1\u989d",
+                    "target": "blank",
+                    "subtext": "Update Time 2025-04-27 23:37:05",
+                    "subtarget": "blank",
+                    "padding": 5,
+                    "itemGap": 10,
+                    "textAlign": "auto",
+                    "textVerticalAlign": "auto",
+                    "triggerEvent": false
+                }
+            ],
+            "tooltip": {
+                "show": true,
+                "trigger": "item",
+                "triggerOn": "mousemove|click",
+                "axisPointer": {
+                    "type": "line"
+                },
+                "showContent": true,
+                "alwaysShowContent": false,
+                "showDelay": 0,
+                "hideDelay": 100,
+                "enterable": false,
+                "confine": false,
+                "appendToBody": false,
+                "transitionDuration": 0.4,
+                "formatter": "{b}<br/>\u91d1\u989d: {c}",
+                "textStyle": {
+                    "fontSize": 14
+                },
+                "borderWidth": 0,
+                "padding": 5,
+                "order": "seriesAsc"
+            },
+            "color": [
+                "#5470c6",
+                "#91cc75",
+                "#fac858",
+                "#ee6666",
+                "#73c0de",
+                "#3ba272",
+                "#fc8452",
+                "#9a60b4",
+                "#ea7ccc"
+            ]
+        },
+        {
+            "legend": [
+                {
+                    "data": [
+                        "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-23\uff09"
+                    ],
+                    "selected": {},
+                    "show": true,
+                    "padding": 5,
+                    "itemGap": 10,
+                    "itemWidth": 25,
+                    "itemHeight": 14,
+                    "backgroundColor": "transparent",
+                    "borderColor": "#ccc",
+                    "borderRadius": 0,
+                    "pageButtonItemGap": 5,
+                    "pageButtonPosition": "end",
+                    "pageFormatter": "{current}/{total}",
+                    "pageIconColor": "#2f4554",
+                    "pageIconInactiveColor": "#aaa",
+                    "pageIconSize": 15,
+                    "animationDurationUpdate": 800,
+                    "selector": false,
+                    "selectorPosition": "auto",
+                    "selectorItemGap": 7,
+                    "selectorButtonGap": 10
+                }
+            ],
+            "series": [
+                {
+                    "type": "treemap",
+                    "name": "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-23\uff09",
+                    "data": [
+                        {
+                            "value": 313725390.0,
+                            "name": "ST\u6458\u5e3d 3.137\u4ebf",
+                            "children": [
+                                {
+                                    "value": 313725390.0,
+                                    "name": "\u6b65\u6b65\u9ad8\n3.137\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 432462090.0,
+                            "name": "\u4e00\u5b63\u62a5\u589e\u957f 4.325\u4ebf",
+                            "children": [
+                                {
+                                    "value": 432462090.0,
+                                    "name": "\u6d59\u6c5f\u4e16\u5b9d\n4.325\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 1386269200.0,
+                            "name": "\u519c\u4e1a 13.863\u4ebf",
+                            "children": [
+                                {
+                                    "value": 1386269200.0,
+                                    "name": "\u5148\u8fbe\u80a1\u4efd\n13.863\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 160069989.9,
+                            "name": "\u7269\u6d41 1.601\u4ebf",
+                            "children": [
+                                {
+                                    "value": 156935270.0,
+                                    "name": "\u4e09\u6728\u96c6\u56e2\n1.569\u4ebf"
+                                },
+                                {
+                                    "value": 3134719.9,
+                                    "name": "\u5929\u5143\u80a1\u4efd\n0.031\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 4270249100.0,
+                            "name": "\u8de8\u5883\u652f\u4ed8 42.702\u4ebf",
+                            "children": [
+                                {
+                                    "value": 2202691300.0,
+                                    "name": "\u6d77\u8054\u91d1\u6c47\n22.027\u4ebf"
+                                },
+                                {
+                                    "value": 1174088660.0,
+                                    "name": "\u65b0\u6668\u79d1\u6280\n11.741\u4ebf"
+                                },
+                                {
+                                    "value": 893469140.0,
+                                    "name": "\u9752\u5c9b\u91d1\u738b\n8.935\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 154332340.0,
+                            "name": "\u9ad8\u9001\u8f6c 1.543\u4ebf",
+                            "children": [
+                                {
+                                    "value": 154332340.0,
+                                    "name": "\u6d77\u68ee\u836f\u4e1a\n1.543\u4ebf"
+                                }
+                            ]
+                        }
+                    ],
+                    "width": "80%",
+                    "height": "80%",
+                    "label": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "upperLabel": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "drillDownIcon": "\u25b6",
+                    "roam": true,
+                    "nodeClick": "zoomToNode",
+                    "zoomToNodeRatio": 0.1024,
+                    "levels": [
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#1c1f24",
+                                "borderWidth": 2
+                            }
+                        },
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#ffffff",
+                                "borderWidth": 1
+                            }
+                        }
+                    ],
+                    "colorMappingBy": "index",
+                    "visibleMin": 10
+                }
+            ],
+            "title": [
+                {
+                    "show": true,
+                    "text": "\u672a\u5339\u914d\u91d1\u989d",
+                    "target": "blank",
+                    "subtext": "Update Time 2025-04-27 23:37:05",
+                    "subtarget": "blank",
+                    "padding": 5,
+                    "itemGap": 10,
+                    "textAlign": "auto",
+                    "textVerticalAlign": "auto",
+                    "triggerEvent": false
+                }
+            ],
+            "tooltip": {
+                "show": true,
+                "trigger": "item",
+                "triggerOn": "mousemove|click",
+                "axisPointer": {
+                    "type": "line"
+                },
+                "showContent": true,
+                "alwaysShowContent": false,
+                "showDelay": 0,
+                "hideDelay": 100,
+                "enterable": false,
+                "confine": false,
+                "appendToBody": false,
+                "transitionDuration": 0.4,
+                "formatter": "{b}<br/>\u91d1\u989d: {c}",
+                "textStyle": {
+                    "fontSize": 14
+                },
+                "borderWidth": 0,
+                "padding": 5,
+                "order": "seriesAsc"
+            },
+            "color": [
+                "#5470c6",
+                "#91cc75",
+                "#fac858",
+                "#ee6666",
+                "#73c0de",
+                "#3ba272",
+                "#fc8452",
+                "#9a60b4",
+                "#ea7ccc"
+            ]
+        },
+        {
+            "legend": [
+                {
+                    "data": [
+                        "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-24\uff09"
+                    ],
+                    "selected": {},
+                    "show": true,
+                    "padding": 5,
+                    "itemGap": 10,
+                    "itemWidth": 25,
+                    "itemHeight": 14,
+                    "backgroundColor": "transparent",
+                    "borderColor": "#ccc",
+                    "borderRadius": 0,
+                    "pageButtonItemGap": 5,
+                    "pageButtonPosition": "end",
+                    "pageFormatter": "{current}/{total}",
+                    "pageIconColor": "#2f4554",
+                    "pageIconInactiveColor": "#aaa",
+                    "pageIconSize": 15,
+                    "animationDurationUpdate": 800,
+                    "selector": false,
+                    "selectorPosition": "auto",
+                    "selectorItemGap": 7,
+                    "selectorButtonGap": 10
+                }
+            ],
+            "series": [
+                {
+                    "type": "treemap",
+                    "name": "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-24\uff09",
+                    "data": [
+                        {
+                            "value": 148258900.0,
+                            "name": "\u5916\u8d38 1.483\u4ebf",
+                            "children": [
+                                {
+                                    "value": 148258900.0,
+                                    "name": "\u8fea\u751f\u529b\n1.483\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 714987910.0,
+                            "name": "\u673a\u5668\u4eba\u6982\u5ff5 7.15\u4ebf",
+                            "children": [
+                                {
+                                    "value": 328987140.0,
+                                    "name": "\u65b9\u6b63\u7535\u673a\n3.29\u4ebf"
+                                },
+                                {
+                                    "value": 280411690.0,
+                                    "name": "\u4e1c\u8d1d\u96c6\u56e2\n2.804\u4ebf"
+                                },
+                                {
+                                    "value": 105589080.0,
+                                    "name": "\u4e30\u534e\u80a1\u4efd\n1.056\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 204448464.0,
+                            "name": "\u7269\u6d41 2.044\u4ebf",
+                            "children": [
+                                {
+                                    "value": 144650090.0,
+                                    "name": "\u4e09\u6728\u96c6\u56e2\n1.447\u4ebf"
+                                },
+                                {
+                                    "value": 59798374.0,
+                                    "name": "\u5929\u5143\u80a1\u4efd\n0.598\u4ebf"
+                                }
+                            ]
+                        }
+                    ],
+                    "width": "80%",
+                    "height": "80%",
+                    "label": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "upperLabel": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "drillDownIcon": "\u25b6",
+                    "roam": true,
+                    "nodeClick": "zoomToNode",
+                    "zoomToNodeRatio": 0.1024,
+                    "levels": [
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#1c1f24",
+                                "borderWidth": 2
+                            }
+                        },
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#ffffff",
+                                "borderWidth": 1
+                            }
+                        }
+                    ],
+                    "colorMappingBy": "index",
+                    "visibleMin": 10
+                }
+            ],
+            "title": [
+                {
+                    "show": true,
+                    "text": "\u672a\u5339\u914d\u91d1\u989d",
+                    "target": "blank",
+                    "subtext": "Update Time 2025-04-27 23:37:05",
+                    "subtarget": "blank",
+                    "padding": 5,
+                    "itemGap": 10,
+                    "textAlign": "auto",
+                    "textVerticalAlign": "auto",
+                    "triggerEvent": false
+                }
+            ],
+            "tooltip": {
+                "show": true,
+                "trigger": "item",
+                "triggerOn": "mousemove|click",
+                "axisPointer": {
+                    "type": "line"
+                },
+                "showContent": true,
+                "alwaysShowContent": false,
+                "showDelay": 0,
+                "hideDelay": 100,
+                "enterable": false,
+                "confine": false,
+                "appendToBody": false,
+                "transitionDuration": 0.4,
+                "formatter": "{b}<br/>\u91d1\u989d: {c}",
+                "textStyle": {
+                    "fontSize": 14
+                },
+                "borderWidth": 0,
+                "padding": 5,
+                "order": "seriesAsc"
+            },
+            "color": [
+                "#5470c6",
+                "#91cc75",
+                "#fac858",
+                "#ee6666",
+                "#73c0de",
+                "#3ba272",
+                "#fc8452",
+                "#9a60b4",
+                "#ea7ccc"
+            ]
+        },
+        {
+            "legend": [
+                {
+                    "data": [
+                        "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-25\uff09"
+                    ],
+                    "selected": {},
+                    "show": true,
+                    "padding": 5,
+                    "itemGap": 10,
+                    "itemWidth": 25,
+                    "itemHeight": 14,
+                    "backgroundColor": "transparent",
+                    "borderColor": "#ccc",
+                    "borderRadius": 0,
+                    "pageButtonItemGap": 5,
+                    "pageButtonPosition": "end",
+                    "pageFormatter": "{current}/{total}",
+                    "pageIconColor": "#2f4554",
+                    "pageIconInactiveColor": "#aaa",
+                    "pageIconSize": 15,
+                    "animationDurationUpdate": 800,
+                    "selector": false,
+                    "selectorPosition": "auto",
+                    "selectorItemGap": 7,
+                    "selectorButtonGap": 10
+                }
+            ],
+            "series": [
+                {
+                    "type": "treemap",
+                    "name": "\u672a\u5339\u914d\u91d1\u989d\uff082025-04-25\uff09",
+                    "data": [
+                        {
+                            "value": 129633453.0,
+                            "name": "\u4e00\u5b63\u62a5\u589e\u957f 1.296\u4ebf",
+                            "children": [
+                                {
+                                    "value": 129633453.0,
+                                    "name": "\u60e0\u800c\u6d66\n1.296\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 1150979560.0,
+                            "name": "\u673a\u5668\u4eba\u6982\u5ff5 11.51\u4ebf",
+                            "children": [
+                                {
+                                    "value": 1150979560.0,
+                                    "name": "\u4e1c\u8d1d\u96c6\u56e2\n11.51\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 315369100.0,
+                            "name": "\u7269\u6d41 3.154\u4ebf",
+                            "children": [
+                                {
+                                    "value": 315369100.0,
+                                    "name": "\u5929\u5143\u80a1\u4efd\n3.154\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 511355290.0,
+                            "name": "\u7535\u529b 5.114\u4ebf",
+                            "children": [
+                                {
+                                    "value": 303212660.0,
+                                    "name": "\u534e\u94f6\u7535\u529b\n3.032\u4ebf"
+                                },
+                                {
+                                    "value": 208142630.0,
+                                    "name": "\u5b81\u6ce2\u8054\u5408\n2.081\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 164577790.0,
+                            "name": "\u80a1\u6743\u8f6c\u8ba9 1.646\u4ebf",
+                            "children": [
+                                {
+                                    "value": 164577790.0,
+                                    "name": "\u5357\u56fd\u7f6e\u4e1a\n1.646\u4ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "value": 132224227.0,
+                            "name": "\u96f6\u552e 1.322\u4ebf",
+                            "children": [
+                                {
+                                    "value": 132224227.0,
+                                    "name": "\u8302\u4e1a\u5546\u4e1a\n1.322\u4ebf"
+                                }
+                            ]
+                        }
+                    ],
+                    "width": "80%",
+                    "height": "80%",
+                    "label": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "upperLabel": {
+                        "show": true,
+                        "position": "inside",
+                        "margin": 8,
+                        "valueAnimation": false
+                    },
+                    "drillDownIcon": "\u25b6",
+                    "roam": true,
+                    "nodeClick": "zoomToNode",
+                    "zoomToNodeRatio": 0.1024,
+                    "levels": [
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#1c1f24",
+                                "borderWidth": 2
+                            }
+                        },
+                        {
+                            "colorMappingBy": "index",
+                            "itemStyle": {
+                                "gapWidth": 1,
+                                "borderColor": "#ffffff",
+                                "borderWidth": 1
+                            }
+                        }
+                    ],
+                    "colorMappingBy": "index",
+                    "visibleMin": 10
+                }
+            ],
+            "title": [
+                {
+                    "show": true,
+                    "text": "\u672a\u5339\u914d\u91d1\u989d",
+                    "target": "blank",
+                    "subtext": "Update Time 2025-04-27 23:37:05",
+                    "subtarget": "blank",
+                    "padding": 5,
+                    "itemGap": 10,
+                    "textAlign": "auto",
+                    "textVerticalAlign": "auto",
+                    "triggerEvent": false
+                }
+            ],
+            "tooltip": {
+                "show": true,
+                "trigger": "item",
+                "triggerOn": "mousemove|click",
+                "axisPointer": {
+                    "type": "line"
+                },
+                "showContent": true,
+                "alwaysShowContent": false,
+                "showDelay": 0,
+                "hideDelay": 100,
+                "enterable": false,
+                "confine": false,
+                "appendToBody": false,
+                "transitionDuration": 0.4,
+                "formatter": "{b}<br/>\u91d1\u989d: {c}",
+                "textStyle": {
+                    "fontSize": 14
+                },
+                "borderWidth": 0,
+                "padding": 5,
+                "order": "seriesAsc"
+            },
+            "color": [
+                "#5470c6",
+                "#91cc75",
+                "#fac858",
+                "#ee6666",
+                "#73c0de",
+                "#3ba272",
+                "#fc8452",
+                "#9a60b4",
+                "#ea7ccc"
+            ]
+        }
+    ]
+});
+        
+        // 响应式调整
+        window.addEventListener('resize', function() {
+            barChart.resize();
+            lineChart.resize();
+        });
+    </script>
+</body>
+</html>
